@@ -33,4 +33,3 @@ public class SearchPanel {
         panel.add(button);
     }
 }
-

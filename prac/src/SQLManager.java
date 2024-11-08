@@ -6,7 +6,7 @@ import static java.sql.DriverManager.getConnection;
 public class SQLManager {
     private static final String url = "jdbc:mysql://localhost:3306/company?serverTimeZone=UTC";
     private static final String user = "root";
-    private static final String password = null /*각자의 비밀번호*/;
+    private static final String password = "jmsophelia0419" /*각자의 비밀번호*/;
     public static final int SELECT = 1;
     public static final int INSERT = 2;
     public static final int DELETE = 3;

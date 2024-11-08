@@ -4,12 +4,11 @@ import java.awt.*;
 import java.lang.annotation.Target;
 
 public class DatabaseApplication {
-
     public static void main(String[] args) {
-        // sql 연결
+        // SQL 연결
         SQLManager sqlManager = new SQLManager();
         if (!sqlManager.tryConnection()) {
-            return ;
+            return;
         }
 
         Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
@@ -24,11 +23,13 @@ public class DatabaseApplication {
         RangePanel rangePanel = new RangePanel();
         SelectPanel selectPanel = new SelectPanel();
         TablePanel tablePanel = new TablePanel();
+
+        // SearchPanel에 TablePanel을 연동하여 검색 결과를 표시하고 삭제할 수 있도록 함
         SearchPanel searchPanel = new SearchPanel(rangePanel, selectPanel, tablePanel);
+
         InsertPanel insertPanel = new InsertPanel();
         InfoPanel infoPanel = new InfoPanel();
         UpdatePanel updatePanel = new UpdatePanel();
-        DeletePanel deletePanel = new DeletePanel();
 
         JPanel clickPanel = new JPanel(); // selectPanel과 searchPanel 한 줄로 나열
         clickPanel.setLayout(new BoxLayout(clickPanel, BoxLayout.X_AXIS));
@@ -41,7 +42,7 @@ public class DatabaseApplication {
         topPanel.add(rangePanel.panel);
         topPanel.add(clickPanel);
 
-        JPanel middlePanel = new JPanel(); // insertPanel과 tablePanel로 한줄로 나열
+        JPanel middlePanel = new JPanel(); // insertPanel과 tablePanel로 한 줄로 나열
         middlePanel.setBorder(BorderFactory.createTitledBorder(border, "middle Panel")); // 테두리 추가
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.X_AXIS));
         middlePanel.add(insertPanel.panel);
@@ -52,7 +53,6 @@ public class DatabaseApplication {
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
         bottomPanel.add(infoPanel.panel);
         bottomPanel.add(updatePanel.panel);
-        bottomPanel.add(deletePanel.panel);
 
         frame.add(topPanel, BorderLayout.NORTH);
         frame.add(middlePanel, BorderLayout.CENTER);
@@ -62,4 +62,3 @@ public class DatabaseApplication {
         frame.setVisible(true);
     }
 }
-
